@@ -21,6 +21,8 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	lendest = ft_strlen(dest);
 	lensrc = ft_strlen(src);
 	i = 0;
+	if (size == 0)
+		return (lensrc);
 	if (size <= lendest)
 		return (size + lensrc);
 	while (i < lensrc && (lendest + 1 + i) < size)
