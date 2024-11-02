@@ -6,7 +6,7 @@
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 14:12:32 by ael-mans          #+#    #+#             */
-/*   Updated: 2024/10/26 14:44:07 by ael-mans         ###   ########.fr       */
+/*   Updated: 2024/11/01 21:56:32 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_bzero(void *s, size_t n)
 	size_t			i;
 	unsigned char	*str;
 
-	str = (unsigned char *) s;
+	str = (unsigned char *)s;
 	i = 0;
 	if (n == 0)
 		return ;
