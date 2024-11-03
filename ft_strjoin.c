@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/01 11:46:04 by ael-mans          #+#    #+#             */
-/*   Updated: 2024/11/03 10:14:23 by ael-mans         ###   ########.fr       */
+/*   Created: 2024/11/03 15:10:46 by ael-mans          #+#    #+#             */
+/*   Updated: 2024/11/03 17:08:38 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	const char	*h;
-	const char	*n;
-	size_t		i;
+	char	*concstr;
+	size_t	totallen;
 
-	if (!*needle)
-		return ((char *)haystack);
-	while (*haystack && len)
-	{
-		h = haystack;
-		n = needle;
-		i = len;
-		while (*n && *h == *n && i)
-		{
-			h++;
-			n++;
-			i--;
-		}
-		if (!*n)
-			return ((char *)haystack);
-		haystack++;
-		len--;
-	}
-	return (NULL);
+	totallen = ft_strlen(s1) + ft_strlen(s2);
+	if (!s1 && !s2)
+		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
+	concstr = (char *)malloc(totallen + 1);
+	if (!concstr)
+		return (NULL);
+	ft_strlcpy(concstr, s1, ft_strlen(s1) + 1);
+	ft_strlcat(concstr, s2, totallen + 1);
+	return (concstr);
 }
