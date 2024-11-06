@@ -6,13 +6,11 @@
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:04:44 by ael-mans          #+#    #+#             */
-/*   Updated: 2024/11/06 12:11:38 by ael-mans         ###   ########.fr       */
+/*   Updated: 2024/11/06 12:12:44 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 char	*copy_word(const char *start, const char *end)
 {
