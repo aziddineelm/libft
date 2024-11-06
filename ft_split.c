@@ -5,12 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/05 18:35:24 by ael-mans          #+#    #+#             */
-/*   Updated: 2024/11/05 18:43:57 by ael-mans         ###   ########.fr       */
+/*   Created: 2024/11/06 12:04:44 by ael-mans          #+#    #+#             */
+/*   Updated: 2024/11/06 12:11:38 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
+
+char	*copy_word(const char *start, const char *end)
+{
+	char	*word;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = end - start;
+	word = (char *)malloc((len + 1) * sizeof(char));
+	if (!word)
+		return (NULL);
+	while (start < end)
+	{
+		word[i] = *start;
+		i++;
+		start++;
+	}
+	word[i] = '\0';
+	return (word);
+}
+
+void	all_free(char **array, size_t count)
+{
+	size_t	i;
+
+	i = 0;
+	while (i > 0)
+	{
+		free(array[i]);
+		i--;
+	}
+	free(array);
+}
 
 static size_t	count_words(const char *s, char c)
 {
@@ -35,51 +71,44 @@ static size_t	count_words(const char *s, char c)
 	return (words);
 }
 
-char	*copy_word(const char *start, const char *end)
+static int	add_word(char **new_string, const char **s, size_t *i, char c)
 {
-	char	*word;
-	int		len;
-	int		i;
+	const char	*start = *s;
 
-	i = 0;
-	len = end - start;
-	word = (char *)malloc((len + 1) * sizeof(char));
-	if (!word)
-		return (NULL);
-	while (start < end)
+	while (**s && **s != c)
+		(*s)++;
+	new_string[*i] = copy_word(start, *s);
+	if (!new_string[*i])
 	{
-		word[i] = *start;
-		i++;
-		start++;
+		all_free(new_string, *i);
+		return (0);
 	}
-	word[i] = '\0';
-	return (word);
+	(*i)++;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char		**new_string;
-	size_t		total_words;
-	size_t		i;	
-	const char	*start;
+	char	**new_string;
+	size_t	total_words;
+	size_t	i;
 
 	total_words = count_words(s, c);
+	i = 0;
 	new_string = (char **)malloc((total_words + 1) * sizeof(char *));
 	if (!new_string)
 		return (NULL);
-	i = 0;
 	while (*s)
 	{
 		if (*s != c)
 		{
-			start = s;
-			while (*s && *s != c)
-				s++;
-			new_string[i] = copy_word(start, s);
-			i++;
+			if (!add_word(new_string, &s, &i, c))
+				return (NULL);
 		}
 		else
+		{
 			s++;
+		}
 	}
 	new_string[i] = NULL;
 	return (new_string);
