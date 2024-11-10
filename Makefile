@@ -1,0 +1,2 @@
+obj:
+	@echo "build"
