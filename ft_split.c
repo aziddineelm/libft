@@ -91,6 +91,8 @@ char	**ft_split(char const *s, char c)
 	size_t	total_words;
 	size_t	i;
 
+	if (!s)
+		return (NULL);
 	total_words = count_words(s, c);
 	i = 0;
 	new_string = (char **)malloc((total_words + 1) * sizeof(char *));
@@ -104,9 +106,7 @@ char	**ft_split(char const *s, char c)
 				return (NULL);
 		}
 		else
-		{
 			s++;
-		}
 	}
 	new_string[i] = NULL;
 	return (new_string);
