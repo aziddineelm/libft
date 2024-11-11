@@ -35,13 +35,10 @@ char	*copy_word(const char *start, const char *end)
 
 void	all_free(char **array, size_t count)
 {
-	size_t	i;
-
-	i = 0;
-	while (i > 0)
+	while (count > 0)
 	{
-		free(array[i]);
-		i--;
+		count--;
+		free(array[count]);
 	}
 	free(array);
 }
