@@ -6,7 +6,7 @@
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:23:39 by ael-mans          #+#    #+#             */
-/*   Updated: 2024/11/14 15:24:06 by ael-mans         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:33:41 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	if (NULL == lst)
+	if (!lst)
 		return (NULL);
 	while (lst->next)
 		lst = lst->next;

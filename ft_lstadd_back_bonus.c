@@ -6,7 +6,7 @@
 /*   By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 15:25:42 by ael-mans          #+#    #+#             */
-/*   Updated: 2024/11/14 15:29:55 by ael-mans         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:49:33 by ael-mans         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*curr;
+	t_list	*last;
 
 	if (!lst)
 		return ;
-	if (*lst)
+	if (!*lst)
 	{
-		curr = ft_lstlast(*lst);
-		curr->next = new;
-	}
-	else
 		*lst = new;
+		return ;
+	}
+	last = ft_lstlast(*lst);
+	last->next = new;
 }

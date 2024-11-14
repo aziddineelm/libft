@@ -6,7 +6,7 @@
 #    By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/13 14:20:02 by ael-mans          #+#    #+#              #
-#    Updated: 2024/11/14 15:35:12 by ael-mans         ###   ########.fr        #
+#    Updated: 2024/11/14 15:52:32 by ael-mans         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,17 +35,16 @@ BOBJ = $(BSRC:.c=.o)
 
 NAME = libft.a
 
-HEADER = libft.h
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $@ $^
 
-%.o: %.c $(HEADER)
+%.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
 
-bonus: $(NAME) $(BOBJ)
+bonus: $(BOBJ)
 	ar rcs $(NAME) $(OBJ) $(BOBJ)
 
 clean:
@@ -56,4 +55,4 @@ fclean: clean
 
 re: clean fclean all
 
-.PHONY: all clean bonus
+.PHONY: all clean bonus re
