@@ -27,18 +27,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(num / 10, fd);
 	ft_putchar_fd((num % 10) + '0', fd);
 }
-
-void	test(int i, int fd)
-{
-	ft_putnbr_fd(i, fd);
-	printf("\n");
-}
-
-int	main(void)
-{
-	test(0, 1);
-	test(100, 1);
-	test(-100, 1);
-	test(INT_MAX, 1);
-	test(INT_MIN, 1);
-}

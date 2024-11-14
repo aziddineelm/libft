@@ -16,9 +16,10 @@ static int	count_digit(int n)
 {
 	int	len;
 
-	len = 0;
 	len = 1;
-	while (n != 0)
+	if (n < 0)
+		len++;
+	while (n / 10 != 0)
 	{
 		len++;
 		n = n / 10;
@@ -54,32 +55,3 @@ char	*ft_itoa(int n)
 	}
 	return (s);
 }
-
-int	main(void)
-{
-	printf("%s", ft_itoa(0));
-}
-// 	char *result;
-//
-// 	result = ft_itoa(0);
-// 	printf("--------ft_itoa(0) = %s\n", result);
-// 	free(result);
-//
-// 	result = ft_itoa(123);
-// 	printf("ft_itoa(123) = %s\n", result);
-// 	free(result);
-//
-// 	result = ft_itoa(-123);
-// 	printf("ft_itoa(-123) = %s\n", result);
-// 	free(result);
-//
-// 	result = ft_itoa(2147483647);
-// 	printf("ft_itoa(2147483647) = %s\n", result);
-// 	free(result);
-//
-// 	result = ft_itoa(-2147483648);
-// 	printf("ft_itoa(-2147483648) = %s\n", result);
-// 	free(result);
-//
-// 	return (0);
-// }
