@@ -6,7 +6,7 @@
 #    By: ael-mans <ael-mans@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/13 14:20:02 by ael-mans          #+#    #+#              #
-#    Updated: 2024/11/14 15:52:32 by ael-mans         ###   ########.fr        #
+#    Updated: 2024/11/14 18:02:21 by ael-mans         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,15 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 	  ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
 	  ft_putstr_fd.c ft_putnbr_fd.c ft_putendl_fd.c
 
-BSRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c \
+SRC_B = ft_lstnew_bonus.c ft_lstadd_front_bonus.c \
 	   ft_lstsize_bonus.c ft_lstlast_bonus.c \
 	   ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-	   ft_lstclear_bonus.c \
+	   ft_lstclear_bonus.c ft_lstiter_bonus.c \
+	   ft_lstmap_bonus.c
 
 OBJ = $(SRC:.c=.o)
 
-BOBJ = $(BSRC:.c=.o)
+OBJ_B = $(SRC_B:.c=.o)
 
 NAME = libft.a
 
@@ -44,11 +45,11 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@
 
-bonus: $(BOBJ)
-	ar rcs $(NAME) $(OBJ) $(BOBJ)
+bonus: $(OBJ_B)
+	ar rcs $(NAME) $(OBJ) $(OBJ_B)
 
 clean:
-	rm -f $(OBJ) $(BOBJ)
+	rm -f $(OBJ) $(OBJ_B)
 
 fclean: clean
 	rm -f $(NAME)
