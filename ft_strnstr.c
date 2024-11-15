@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include <bsd/string.h>
+
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	const char	*h;
@@ -39,13 +40,17 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	return (NULL);
 }
 
-int main()
+int	main(void)
 {
-	char *s = "asdfHelloasdf";
-	char *j = "Hello";
-	char *new = ft_strnstr(s, j, -1);
-	char *new1 = strnstr(s, j, -1);
+	char	*s;
+	char	*j;
+	char	*new;
+	char	*new1;
 
+	s = "asdfHelloasdf";
+	j = "Hello";
+	new = ft_strnstr(s, j, -1);
+	new1 = strnstr(s, j, -1);
 	printf("%s\n", new);
 	printf("%s", new1);
 }
