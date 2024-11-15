@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <bsd/string.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
@@ -38,19 +37,4 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		len--;
 	}
 	return (NULL);
-}
-
-int	main(void)
-{
-	char	*s;
-	char	*j;
-	char	*new;
-	char	*new1;
-
-	s = "asdfHelloasdf";
-	j = "Hello";
-	new = ft_strnstr(s, j, -1);
-	new1 = strnstr(s, j, -1);
-	printf("%s\n", new);
-	printf("%s", new1);
 }
